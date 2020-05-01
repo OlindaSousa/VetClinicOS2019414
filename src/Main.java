@@ -1,6 +1,10 @@
 
 public class Main {
 
+	public Main() {
+		
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -9,6 +13,6 @@ public class Main {
 		// criar o animal, pega o nome e salva
 		// cria o staff, gera o nome e salva
 
-	}
+			}
 
 }

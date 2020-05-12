@@ -9,6 +9,7 @@ public class MainVetClinic {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		//Helper
 		Staff[] staffList = new Staff[10];
 		StaffGenerator myStaffGenerator = new StaffGenerator();
 

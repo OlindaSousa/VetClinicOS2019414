@@ -4,8 +4,8 @@ public abstract class Staff {
 
 	private String name;
 	private String surname;
-	//public String typeOfStaff;
-	private String salaryLevel;
+	//public String categories / typeOfStaff;
+	private String salaryLevel; // junior - enter level, pleno e senior
 	private int ID;
 	
 	public Staff(String name, String surname, String salaryLevel, int iD) {

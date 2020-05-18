@@ -5,22 +5,53 @@ import animal.*;
 import staff.*;
 
 public class MainVetClinic {
-
+	
+	static Staff[] staffList = new Staff[10];
+	static Animals[] animalsList = new Animals[6];
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		staff();
-		animals();
-		animalAge();
-		medicalCondition();
+		//staffList();
+		//printStaff(staffList);
+		//tasks();
+//		animals();
+//		animalAge();
+//		medicalCondition();
 	}
 
-	static Staff[] staffList = new Staff[10];
 	static StaffGenerator myStaffGenerator = new StaffGenerator();
-	static Animals[] animalsList = new Animals[6];
 	static AnimalGenerator myAnimalGenerator = new AnimalGenerator();
 
-	public static void staff() {
+	public void searchByCategory(String category) {
+		
+		for (Staff s : staffList) {
+			if (s.getOccupation().equalsIgnoreCase(category)) {
+				System.out.println(s.getName() + " " + s.getOccupation());
+			}
+
+		}
+
+	}
+	public void searchStaff(String staffName) {
+
+		for (Staff s : staffList) {
+			if (s.getName().equalsIgnoreCase(staffName)) {
+				System.out.println(s.getName() + " " + s.getOccupation());
+			}
+
+		}
+
+	}
+
+	public void printStaff(Staff[] list) {
+
+		for (Staff s : staffList) {
+
+			System.out.println("Staff name: " + s.getName() + " " + s.getSurname());
+		}
+	}
+
+	public Staff[] staffList() {
 
 		// Helper
 
@@ -30,7 +61,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new Receptionist(nameParts[0], nameParts[1], "", 0);
+			Staff list = new Receptionist(nameParts[0], nameParts[1], "", "", 0, "");
 
 			staffList[i] = list;
 
@@ -42,7 +73,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new ITNerd(nameParts[0], nameParts[1], "", 0);
+			Staff list = new ITNerd(nameParts[0], nameParts[1], "", "", 0, "");
 
 			staffList[i] = list;
 
@@ -54,7 +85,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new Nurse(nameParts[0], nameParts[1], "", 0);
+			Staff list = new Nurse(nameParts[0], nameParts[1], "", "", 0, "");
 
 			staffList[i] = list;
 
@@ -66,7 +97,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new Veterinarian(nameParts[0], nameParts[1], "", 0);
+			Staff list = new Veterinarian(nameParts[0], nameParts[1], "", "", 0, "");
 
 			staffList[i] = list;
 
@@ -78,21 +109,27 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new TraineeVet(nameParts[0], nameParts[1], "", 0);
+			Staff list = new TraineeVet(nameParts[0], nameParts[1], "", "", 0, "");
 
 			staffList[i] = list;
 
 		}
 
-		for (Staff s : staffList) {
-
-			System.out.println("Staff name: " + s.getName() + " " + s.getSurname());
-		}
+		return staffList;
 
 	}
-	
-	public static void tasks() {
-		
+
+	public void tasks() {
+
+		for (int i = 0; i < staffList.length; i++) {
+			String tasks = myStaffGenerator.getRandomTasks();
+
+			for (Staff s : staffList) {
+				System.out.println(s.getName() + " " + s.getOccupation() + " " + tasks);
+
+			}
+		}
+
 	}
 
 	public static void animals() {
@@ -141,20 +178,20 @@ public class MainVetClinic {
 
 	public static void animalAge() {
 
-		int animalAge = myAnimalGenerator.getRandomAge();
-		//int[] age = animalAge;
-
+		// int animalAge = myAnimalGenerator.getRandomAge();
+		// int[] age = animalAge;
 
 	}
 
 	public static void medicalCondition() {
 		for (int i = 1; i < 6; i++) {
 
-		String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
-		String[] mCond = medicalCondicion.split(" ");
+			String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
+			// String[] mCond = medicalCondicion.split(" ");
 
-		System.out.println("Animal medical condition: " + medicalCondicion);
+			System.out.println("Animal medical condition: " + medicalCondicion);
 		}
+
 	}
 
 }

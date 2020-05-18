@@ -9,10 +9,22 @@ public class MainVetClinic {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//Helper
-		Staff[] staffList = new Staff[10];
-		StaffGenerator myStaffGenerator = new StaffGenerator();
+		staff();
+		animals();
+		animalAge();
+		medicalCondition();
+	}
 
+	static Staff[] staffList = new Staff[10];
+	static StaffGenerator myStaffGenerator = new StaffGenerator();
+	static Animals[] animalsList = new Animals[6];
+	static AnimalGenerator myAnimalGenerator = new AnimalGenerator();
+
+	public static void staff() {
+
+		// Helper
+
+		// Recepcionist
 		for (int i = 0; i < 2; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
@@ -24,6 +36,7 @@ public class MainVetClinic {
 
 		}
 
+		// IT Nerd
 		for (int i = 2; i < 4; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
@@ -35,6 +48,7 @@ public class MainVetClinic {
 
 		}
 
+		// Nurse
 		for (int i = 4; i < 6; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
@@ -46,6 +60,7 @@ public class MainVetClinic {
 
 		}
 
+		// Veterinarian
 		for (int i = 6; i < 8; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
@@ -57,6 +72,7 @@ public class MainVetClinic {
 
 		}
 
+		// TraineeVet
 		for (int i = 8; i < 10; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
@@ -73,20 +89,27 @@ public class MainVetClinic {
 			System.out.println("Staff name: " + s.getName() + " " + s.getSurname());
 		}
 
-		Animals[] animalsList = new Animals[6];
-		AnimalGenerator myAnimalGenerator = new AnimalGenerator();
+	}
+	
+	public static void tasks() {
+		
+	}
 
+	public static void animals() {
+
+		// Cat
 		for (int i = 0; i < 2; i++) {
 
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
-			
+
 			Animals animalList = new Cat(nameParts[0], 0, "", 0);
 
 			animalsList[i] = animalList;
 
 		}
 
+		// Dog
 		for (int i = 2; i < 4; i++) {
 
 			String animalName = myAnimalGenerator.getRandomAnimal();
@@ -98,6 +121,7 @@ public class MainVetClinic {
 
 		}
 
+		// Rabbit
 		for (int i = 4; i < 6; i++) {
 
 			String animalName = myAnimalGenerator.getRandomAnimal();
@@ -112,6 +136,24 @@ public class MainVetClinic {
 		for (Animals a : animalsList) {
 
 			System.out.println("Animal name: " + a.getName());
+		}
+	}
+
+	public static void animalAge() {
+
+		int animalAge = myAnimalGenerator.getRandomAge();
+		//int[] age = animalAge;
+
+
+	}
+
+	public static void medicalCondition() {
+		for (int i = 1; i < 6; i++) {
+
+		String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
+		String[] mCond = medicalCondicion.split(" ");
+
+		System.out.println("Animal medical condition: " + medicalCondicion);
 		}
 	}
 

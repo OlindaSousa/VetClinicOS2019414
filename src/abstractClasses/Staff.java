@@ -4,6 +4,7 @@ public abstract class Staff {
 
 	private String name;
 	private String surname;
+	//private String tasks;
 	//public String categories / typeOfStaff;
 	private String salaryLevel; // junior - enter level, pleno e senior
 	private int ID;

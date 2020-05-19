@@ -4,16 +4,13 @@ import abstractClasses.Staff;
 import animal.*;
 import staff.*;
 
-public class MainVetClinic {
+public class VetClinicHelper {
 
 	static Staff[] staffList = new Staff[10];
-	static Animals[] animalsList = new Animals[6];
+	static Animals[] animalsList = new Animals[1000];
 
 	public static void main(String[] args) {
 
-
-		searchByCategoryAnimal("type");
-		
 	}
 
 	static StaffGenerator myStaffGenerator = new StaffGenerator();
@@ -27,10 +24,9 @@ public class MainVetClinic {
 		for (int i = 0; i < 2; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
+			String tasks = myStaffGenerator.getRandomTasks();
 			String[] nameParts = staffName.split(" ");
-
-			Staff list = new Receptionist(nameParts[0], nameParts[1], "", "", 0, "");
-
+			Staff list = new Receptionist(nameParts[0], nameParts[1], tasks, "", i, "");
 			staffList[i] = list;
 
 		}
@@ -41,7 +37,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new ITNerd(nameParts[0], nameParts[1], "", "", 0, "");
+			Staff list = new ITNerd(nameParts[0], nameParts[1], "", "", i, "");
 
 			staffList[i] = list;
 
@@ -53,7 +49,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new Nurse(nameParts[0], nameParts[1], "", "", 0, "");
+			Staff list = new Nurse(nameParts[0], nameParts[1], "", "", i, "");
 
 			staffList[i] = list;
 
@@ -65,7 +61,7 @@ public class MainVetClinic {
 			String staffName = myStaffGenerator.getRandomName();
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new Veterinarian(nameParts[0], nameParts[1], "", "", 0, "");
+			Staff list = new Veterinarian(nameParts[0], nameParts[1], "", "", i, "");
 
 			staffList[i] = list;
 
@@ -75,9 +71,10 @@ public class MainVetClinic {
 		for (int i = 8; i < 10; i++) {
 
 			String staffName = myStaffGenerator.getRandomName();
+			
 			String[] nameParts = staffName.split(" ");
 
-			Staff list = new TraineeVet(nameParts[0], nameParts[1], "", "", 0, "");
+			Staff list = new TraineeVet(nameParts[0], nameParts[1], "", "", i, "");
 
 			staffList[i] = list;
 
@@ -86,80 +83,84 @@ public class MainVetClinic {
 		return staffList;
 
 	}
-	
-	public void printStaff(Staff[] list) {
-
-		for (Staff s : staffList) {
-
-			System.out.println(s.getName() + " " + s.getSurname());
-		}
-	}
 
 	public void tasks() {
-
-		for (Staff s : staffList) {
-			String tasks = myStaffGenerator.getRandomTasks();
-			System.out.println(s.getName() + " " + s.getOccupation() + " " + tasks);
-
+		for (Staff s : staffList) {			
+			System.out.println("Name of Staff: " + s.getName() + " " + s.getSurname() + " \n" + "Tasks: " + s.getTasks() + "\n");
 		}
 
+	}
+
+	public void printStaff() {
+		for (Staff s : staffList) {
+			System.out.println("ID: "+ s.getID() + "\n"+ "Name of Staff: " + s.getName() + " " + s.getSurname() + "\n" + "Staff occupaton: "
+					+ s.getClass().getSimpleName() + "\n" + "Tasks: " + s.getTasks() + "\n" + "Salary level: " + "xx"
+					+ "\n");
+		}
 	}
 
 	public void searchByCategory(String category) {
 
 		for (Staff s : staffList) {
+
 			if (s.getOccupation().equalsIgnoreCase(category)) {
-				System.out.println(s.getName() + " " + s.getOccupation());
+				System.out.println(s.getName() + " " + s.getSurname());
 			}
 
 		}
 
 	}
 
-	public void searchStaff(String staffName) {
+	public Staff searchStaff(String staffName) {
 
 		for (Staff s : staffList) {
 			if (s.getName().equalsIgnoreCase(staffName)) {
-				System.out.println(s.getName() + " " + s.getOccupation());
+				return s;
 			}
-
 		}
-
+		
+		return null;
 	}
 
 	public Animals[] animalsList() {
 
 		// Cat
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 400; i++) {
 
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
+			String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
+			int age = myAnimalGenerator.getRandomAge();
 
-			Animals animalList = new Cat(nameParts[0], 0, "", "", 0);
+			Animals animalList = new Cat(nameParts[0], age, medicalCondicion, "", 0);
 
 			animalsList[i] = animalList;
 
 		}
 
 		// Dog
-		for (int i = 2; i < 4; i++) {
+		for (int i = 400; i < 650; i++) {
 
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
+			String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
+			int age = myAnimalGenerator.getRandomAge();
 
-			Animals animalList = new Dog(nameParts[0], 0, "", "", 0);
+			Animals animalList = new Dog(nameParts[0], age, medicalCondicion, "", 0);
 
 			animalsList[i] = animalList;
 
 		}
 
 		// Rabbit
-		for (int i = 4; i < 6; i++) {
+		for (int i = 650; i < 1000; i++) {
 
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
+			String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
+			int age = myAnimalGenerator.getRandomAge();
 
-			Animals animalList = new Rabbit(nameParts[0], 0, "", "", 0);
+			Animals animalList = new Rabbit(nameParts[0], age, medicalCondicion, "", 0);
 
 			animalsList[i] = animalList;
 
@@ -172,29 +173,20 @@ public class MainVetClinic {
 
 		for (Animals a : animalsList) {
 
-			System.out.println(a.getName());
+			System.out.println("Name of animal: " + a.getName() + "\n" + "Type of Animal: " + a.getTypeOfAnimal() + "\n"
+					+ "Age: " + a.getAge() + "\n" + "Medical Condition: " + a.getMedicalCondition() + "\n");
 		}
 	}
-	
+
 	public static void animalAge() {
-
-		// int animalAge = myAnimalGenerator.getRandomAge();
-		// int[] age = animalAge;
-
+		//TODO
 	}
 
 	public static void medicalCondition() {
-		for (int i = 1; i < 6; i++) {
-
-			String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
-			// String[] mCond = medicalCondicion.split(" ");
-
-			System.out.println(medicalCondicion);
-		}
-
+		//TODO
 	}
-	
-	public static void searchByCategoryAnimal(String type) {
+
+	public void searchByCategoryAnimal(String type) {
 
 		for (Animals a : animalsList) {
 			if (a.getTypeOfAnimal().equalsIgnoreCase(type)) {

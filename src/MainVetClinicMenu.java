@@ -1,12 +1,15 @@
 import java.util.Scanner;
 
-public class MainMenu {
-	MainVetClinic mvc;
+import abstractClasses.Staff;
 
-	public MainMenu() {
+public class MainVetClinicMenu {
+	VetClinicHelper mvc;
 
-		mvc = new MainVetClinic();
+	public MainVetClinicMenu() {
+
+		mvc = new VetClinicHelper();
 		mvc.staffList();
+		mvc.animalsList();
 
 		welcomeMenu();
 
@@ -35,7 +38,7 @@ public class MainMenu {
 			String staffOption = myScanner.next();
 
 			if (staffOption.equals("1")) {
-				mvc.printStaff(mvc.staffList());
+				mvc.printStaff();
 			}
 
 			else if (staffOption.equals("2")) {
@@ -44,11 +47,20 @@ public class MainMenu {
 
 			} else if (staffOption.equals("3")) {
 				mvc.tasks();
+				
 			} else if (staffOption.equals("4")) {
 
 				System.out.println("Please insert staff Name");
 				String staffName = myScanner.next();
-				mvc.searchStaff(staffName);
+				Staff s = mvc.searchStaff(staffName);
+				
+				if (s != null) {
+					System.out.println("Name of Staff: " + s.getName() + " " + s.getSurname() + "\n" + "Staff occupaton: "
+							+ s.getOccupation() + "\n" + "Tasks: " + s.getTasks() + "\n" + "Salary level: " + "xx" + "\n");
+				}
+				else {
+					System.out.println(staffName.toUpperCase() + " is not found" );
+				}
 
 			} else {
 				System.out.println("Invalid option. Please insert number 1, 2, 3 or 4.");
@@ -59,28 +71,28 @@ public class MainMenu {
 
 			System.out.println("What would you like to see from animal list:");
 			System.out.println("1 - List of all animals:");
-			System.out.println("2 - Staff listed by category:");
+			System.out.println("2 - Animal listed by category:");
 			System.out.println("3 - Search for a specific staff by name:");
 
-			String staffOption = myScanner.next();
+			String animalOption = myScanner.next();
 
-			if (staffOption.equals("1")) {
+			if (animalOption.equals("1")) {
 				mvc.printAnimals(mvc.animalsList());
 			}
 
-			else if (staffOption.equals("2")) {
+			else if (animalOption.equals("2")) {
 
 				typeAnimals();
 
-			} else if (staffOption.equals("3")) {
+			} else if (animalOption.equals("3")) {
 
 				System.out.println("Please insert animal Name");
 				String animalName = myScanner.next();
-				mvc.searchByCategoryAnimal(animalName);
+				mvc.searchAnimal(animalName);
 
 			} else {
-				System.out.println("Invalid option. Please insert number 1, 2 or 3");				
-			} 
+				System.out.println("Invalid option. Please insert number 1, 2 or 3");
+			}
 
 		}
 
@@ -122,7 +134,7 @@ public class MainMenu {
 		}
 
 	}
-	
+
 	public void typeAnimals() {
 
 		Scanner myScanner = new Scanner(System.in);
@@ -135,19 +147,19 @@ public class MainMenu {
 
 		if (categoryOption.equals("1")) {
 			String type = "dog";
-			mvc.searchByCategory(type);
+			mvc.searchByCategoryAnimal(type);
 
 		}
 
 		else if (categoryOption.equals("2")) {
 			String type = "cat";
-			mvc.searchByCategory(type);
+			mvc.searchByCategoryAnimal(type);
 
 		}
 
 		else if (categoryOption.equals("3")) {
 			String type = "rabbit";
-			mvc.searchByCategory(type);
+			mvc.searchByCategoryAnimal(type);
 
 		} else {
 			System.out.println("Invalid option. Please insert number 1, 2 or 3.");
@@ -159,7 +171,8 @@ public class MainMenu {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		new MainMenu();
+		new MainVetClinicMenu();
 
 	}
+
 }

@@ -5,7 +5,6 @@ public abstract class Staff {
 	private String name;
 	private String surname;
 	private String tasks;
-	//public String categories / typeOfStaff;
 	private String salaryLevel; // junior - enter level, pleno e senior
 	private int ID;
 	private String occupation;
@@ -14,18 +13,11 @@ public abstract class Staff {
 		super();
 		this.name = name;
 		this.surname = surname;
+		this.tasks = tasks;
 		this.salaryLevel = salaryLevel;
 		ID = iD;
 		this.occupation = occupation;
-		this.tasks = tasks;
-	}
-
-	public String getOccupation() {
-		return occupation;
-	}
-
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
+		
 	}
 
 	public String getName() {
@@ -35,7 +27,7 @@ public abstract class Staff {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getSurname() {
 		return surname;
 	}
@@ -67,5 +59,14 @@ public abstract class Staff {
 	public void setID(int iD) {
 		ID = iD;
 	}
-	
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+
 }

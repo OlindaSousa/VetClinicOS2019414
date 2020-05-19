@@ -54,9 +54,9 @@ public class MainVetClinicMenu {
 				Staff s = mvc.searchStaff(staffName);
 
 				if (s != null) {
-					System.out.println("Name of Staff: " + s.getName() + " " + s.getSurname() + "\n"
-							+ "Staff occupaton: " + s.getOccupation() + "\n" + "Tasks: " + s.getTasks() + "\n"
-							+ "Salary level: " + "xx" + "\n");
+					System.out.println("Staff ID: " + s.getID() + "\n" + "Staff Name: " + s.getName() + " " + s.getSurname()
+					+ "\n" + "Staff Occupaton: " + s.getClass().getSimpleName() + "\n" + "Salary level: "
+					+ s.getSalaryLevel() + "\n");
 				}
 
 				else {
@@ -114,7 +114,10 @@ public class MainVetClinicMenu {
 		System.out.println("2 - IT");
 		System.out.println("3 - Nurses");
 		System.out.println("4 - Veterinarian");
-		System.out.println("5 - TraineeVet");
+		System.out.println("5 - Veterinarian Dentist");
+		System.out.println("6 - Veterinarian Neurologist");
+		System.out.println("7 - Veterinarian Surgeon");
+		System.out.println("8 - TraineeVet");
 
 		String categoryOption = myScanner.next();
 
@@ -139,12 +142,27 @@ public class MainVetClinicMenu {
 		}
 		
 		else if (categoryOption.equals("5")) {
-			String category = "traineevet";
+			String category = "veterinarian dentist";
+			mvc.searchByCategory(category);
+		}
+		
+		else if (categoryOption.equals("6")) {
+			String category = "veterinarian neurologist";
+			mvc.searchByCategory(category);
+		}
+		
+		else if (categoryOption.equals("7")) {
+			String category = "veterinarian surgeon";
+			mvc.searchByCategory(category);
+		}
+		
+		else if (categoryOption.equals("8")) {
+			String category = "trainee Vet";
 			mvc.searchByCategory(category);
 		}
 
 		else {
-			System.out.println("Invalid option. Please insert number 1, 2, 3, 4 or 5.");
+			System.out.println("Invalid option. Please insert number 1, 2, 3, 4, 5, 6, 7 or 8.");
 			categoryOptions();
 		}
 

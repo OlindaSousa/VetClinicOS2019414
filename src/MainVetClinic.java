@@ -5,51 +5,19 @@ import animal.*;
 import staff.*;
 
 public class MainVetClinic {
-	
+
 	static Staff[] staffList = new Staff[10];
 	static Animals[] animalsList = new Animals[6];
-	
+
 	public static void main(String[] args) {
 
-		//staffList();
-		//printStaff(staffList);
-		//tasks();
-//		animals();
-//		animalAge();
-//		medicalCondition();
+
+		searchByCategoryAnimal("type");
+		
 	}
 
 	static StaffGenerator myStaffGenerator = new StaffGenerator();
 	static AnimalGenerator myAnimalGenerator = new AnimalGenerator();
-
-	public void searchByCategory(String category) {
-		
-		for (Staff s : staffList) {
-			if (s.getOccupation().equalsIgnoreCase(category)) {
-				System.out.println(s.getName() + " " + s.getOccupation());
-			}
-
-		}
-
-	}
-	public void searchStaff(String staffName) {
-
-		for (Staff s : staffList) {
-			if (s.getName().equalsIgnoreCase(staffName)) {
-				System.out.println(s.getName() + " " + s.getOccupation());
-			}
-
-		}
-
-	}
-
-	public void printStaff(Staff[] list) {
-
-		for (Staff s : staffList) {
-
-			System.out.println("Staff name: " + s.getName() + " " + s.getSurname());
-		}
-	}
 
 	public Staff[] staffList() {
 
@@ -118,21 +86,48 @@ public class MainVetClinic {
 		return staffList;
 
 	}
+	
+	public void printStaff(Staff[] list) {
+
+		for (Staff s : staffList) {
+
+			System.out.println(s.getName() + " " + s.getSurname());
+		}
+	}
 
 	public void tasks() {
 
-		for (int i = 0; i < staffList.length; i++) {
+		for (Staff s : staffList) {
 			String tasks = myStaffGenerator.getRandomTasks();
+			System.out.println(s.getName() + " " + s.getOccupation() + " " + tasks);
 
-			for (Staff s : staffList) {
-				System.out.println(s.getName() + " " + s.getOccupation() + " " + tasks);
-
-			}
 		}
 
 	}
 
-	public static void animals() {
+	public void searchByCategory(String category) {
+
+		for (Staff s : staffList) {
+			if (s.getOccupation().equalsIgnoreCase(category)) {
+				System.out.println(s.getName() + " " + s.getOccupation());
+			}
+
+		}
+
+	}
+
+	public void searchStaff(String staffName) {
+
+		for (Staff s : staffList) {
+			if (s.getName().equalsIgnoreCase(staffName)) {
+				System.out.println(s.getName() + " " + s.getOccupation());
+			}
+
+		}
+
+	}
+
+	public Animals[] animalsList() {
 
 		// Cat
 		for (int i = 0; i < 2; i++) {
@@ -140,7 +135,7 @@ public class MainVetClinic {
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
 
-			Animals animalList = new Cat(nameParts[0], 0, "", 0);
+			Animals animalList = new Cat(nameParts[0], 0, "", "", 0);
 
 			animalsList[i] = animalList;
 
@@ -152,7 +147,7 @@ public class MainVetClinic {
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
 
-			Animals animalList = new Dog(nameParts[0], 0, "", 0);
+			Animals animalList = new Dog(nameParts[0], 0, "", "", 0);
 
 			animalsList[i] = animalList;
 
@@ -164,18 +159,23 @@ public class MainVetClinic {
 			String animalName = myAnimalGenerator.getRandomAnimal();
 			String[] nameParts = animalName.split(" ");
 
-			Animals animalList = new Rabbit(nameParts[0], 0, "", 0);
+			Animals animalList = new Rabbit(nameParts[0], 0, "", "", 0);
 
 			animalsList[i] = animalList;
 
 		}
 
-		for (Animals a : animalsList) {
-
-			System.out.println("Animal name: " + a.getName());
-		}
+		return animalsList;
 	}
 
+	public void printAnimals(Animals[] animalList) {
+
+		for (Animals a : animalsList) {
+
+			System.out.println(a.getName());
+		}
+	}
+	
 	public static void animalAge() {
 
 		// int animalAge = myAnimalGenerator.getRandomAge();
@@ -189,7 +189,29 @@ public class MainVetClinic {
 			String medicalCondicion = myAnimalGenerator.getRandomMedicalCondition();
 			// String[] mCond = medicalCondicion.split(" ");
 
-			System.out.println("Animal medical condition: " + medicalCondicion);
+			System.out.println(medicalCondicion);
+		}
+
+	}
+	
+	public static void searchByCategoryAnimal(String type) {
+
+		for (Animals a : animalsList) {
+			if (a.getTypeOfAnimal().equalsIgnoreCase(type)) {
+				System.out.println(a.getName() + " " + a.getTypeOfAnimal());
+			}
+
+		}
+
+	}
+
+	public void searchAnimal(String animalName) {
+
+		for (Animals a : animalsList) {
+			if (a.getName().equalsIgnoreCase(animalName)) {
+				System.out.println(a.getName() + " " + a.getTypeOfAnimal());
+			}
+
 		}
 
 	}

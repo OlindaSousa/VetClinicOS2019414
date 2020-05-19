@@ -22,9 +22,9 @@ public class AnimalGenerator {
 
 		// pick a firstname and surname based on length of array
 		String aname = nameAnimal[r.nextInt(nameAnimal.length)];
-		String mcondition = medicalCondition[r.nextInt(medicalCondition.length)];
+		//String mcondition = medicalCondition[r.nextInt(medicalCondition.length)];
 
-		return (aname + mcondition);
+		return (aname);
 
 	}
 

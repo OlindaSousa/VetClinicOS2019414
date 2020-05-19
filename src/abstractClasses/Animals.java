@@ -5,14 +5,15 @@ public abstract class Animals {
 	private String name;
 	private int age;
 	private String medicalCondition;
-	//private String typeOfAnimal; 
+	private String typeOfAnimal; 
 	private int ID;
 
-	public Animals(String name, int age, String medicalCondition, int iD) {
+	public Animals(String name, int age, String medicalCondition, String typeOfAnimal, int iD) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.medicalCondition = medicalCondition;
+		this.typeOfAnimal = typeOfAnimal;
 		ID = iD;
 	}
 
@@ -38,6 +39,14 @@ public abstract class Animals {
 
 	public void setMedicalCondition(String medicalCondition) {
 		this.medicalCondition = medicalCondition;
+	}
+
+	public String getTypeOfAnimal() {
+		return typeOfAnimal;
+	}
+
+	public void setTypeOfAnimal(String typeOfAnimal) {
+		this.typeOfAnimal = typeOfAnimal;
 	}
 
 	public int getID() {

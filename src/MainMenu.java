@@ -14,7 +14,7 @@ public class MainMenu {
 
 	public void welcomeMenu() {
 
-		System.out.println("Welcome to VetClinic Olinda!");
+		System.out.println("Welcome to OS VetClinic!");
 
 		System.out.println("What information would like to consult:");
 
@@ -57,6 +57,31 @@ public class MainMenu {
 
 		else if (option.equals("2")) {
 
+			System.out.println("What would you like to see from animal list:");
+			System.out.println("1 - List of all animals:");
+			System.out.println("2 - Staff listed by category:");
+			System.out.println("3 - Search for a specific staff by name:");
+
+			String staffOption = myScanner.next();
+
+			if (staffOption.equals("1")) {
+				mvc.printAnimals(mvc.animalsList());
+			}
+
+			else if (staffOption.equals("2")) {
+
+				typeAnimals();
+
+			} else if (staffOption.equals("3")) {
+
+				System.out.println("Please insert animal Name");
+				String animalName = myScanner.next();
+				mvc.searchByCategoryAnimal(animalName);
+
+			} else {
+				System.out.println("Invalid option. Please insert number 1, 2 or 3");				
+			} 
+
 		}
 
 		else {
@@ -94,6 +119,39 @@ public class MainMenu {
 		} else {
 			System.out.println("Invalid option. Please insert number 1, 2 or 3.");
 			categoryOptions();
+		}
+
+	}
+	
+	public void typeAnimals() {
+
+		Scanner myScanner = new Scanner(System.in);
+		System.out.println("Select one of the types below:");
+		System.out.println("1 - Dog");
+		System.out.println("2 - Cat");
+		System.out.println("3 - Habbit");
+
+		String categoryOption = myScanner.next();
+
+		if (categoryOption.equals("1")) {
+			String type = "dog";
+			mvc.searchByCategory(type);
+
+		}
+
+		else if (categoryOption.equals("2")) {
+			String type = "cat";
+			mvc.searchByCategory(type);
+
+		}
+
+		else if (categoryOption.equals("3")) {
+			String type = "rabbit";
+			mvc.searchByCategory(type);
+
+		} else {
+			System.out.println("Invalid option. Please insert number 1, 2 or 3.");
+			typeAnimals();
 		}
 
 	}

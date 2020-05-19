@@ -18,9 +18,7 @@ public class MainVetClinicMenu {
 	public void welcomeMenu() {
 
 		System.out.println("Welcome to OS VetClinic!");
-
 		System.out.println("What information would like to consult:");
-
 		System.out.println("1 - Staff");
 		System.out.println("2 - Aninals");
 
@@ -42,27 +40,31 @@ public class MainVetClinicMenu {
 			}
 
 			else if (staffOption.equals("2")) {
-
 				categoryOptions();
-
-			} else if (staffOption.equals("3")) {
+			} 
+			
+			else if (staffOption.equals("3")) {
 				mvc.tasks();
-				
-			} else if (staffOption.equals("4")) {
+			} 
+			
+			else if (staffOption.equals("4")) {
 
 				System.out.println("Please insert staff Name");
 				String staffName = myScanner.next();
 				Staff s = mvc.searchStaff(staffName);
-				
+
 				if (s != null) {
-					System.out.println("Name of Staff: " + s.getName() + " " + s.getSurname() + "\n" + "Staff occupaton: "
-							+ s.getOccupation() + "\n" + "Tasks: " + s.getTasks() + "\n" + "Salary level: " + "xx" + "\n");
-				}
-				else {
-					System.out.println(staffName.toUpperCase() + " is not found" );
+					System.out.println("Name of Staff: " + s.getName() + " " + s.getSurname() + "\n"
+							+ "Staff occupaton: " + s.getOccupation() + "\n" + "Tasks: " + s.getTasks() + "\n"
+							+ "Salary level: " + "xx" + "\n");
 				}
 
-			} else {
+				else {
+					System.out.println(staffName.toUpperCase() + " is not found");
+				}
+			}
+
+			else {
 				System.out.println("Invalid option. Please insert number 1, 2, 3 or 4.");
 			}
 		}
@@ -83,14 +85,16 @@ public class MainVetClinicMenu {
 			else if (animalOption.equals("2")) {
 
 				typeAnimals();
+			}
 
-			} else if (animalOption.equals("3")) {
+			else if (animalOption.equals("3")) {
 
 				System.out.println("Please insert animal Name");
 				String animalName = myScanner.next();
 				mvc.searchAnimal(animalName);
+			}
 
-			} else {
+			else {
 				System.out.println("Invalid option. Please insert number 1, 2 or 3");
 			}
 
@@ -107,29 +111,40 @@ public class MainVetClinicMenu {
 		Scanner myScanner = new Scanner(System.in);
 		System.out.println("Select one of the categories below:");
 		System.out.println("1 - Receptionist");
-		System.out.println("2 - Nurses");
-		System.out.println("3 - Veterinarian");
+		System.out.println("2 - IT");
+		System.out.println("3 - Nurses");
+		System.out.println("4 - Veterinarian");
+		System.out.println("5 - TraineeVet");
 
 		String categoryOption = myScanner.next();
 
 		if (categoryOption.equals("1")) {
 			String category = "receptionist";
 			mvc.searchByCategory(category);
-
 		}
 
 		else if (categoryOption.equals("2")) {
+			String category = "it";
+			mvc.searchByCategory(category);
+		}
+		
+		else if (categoryOption.equals("3")) {
 			String category = "nurse";
 			mvc.searchByCategory(category);
-
 		}
 
-		else if (categoryOption.equals("3")) {
+		else if (categoryOption.equals("4")) {
 			String category = "veterinarian";
 			mvc.searchByCategory(category);
+		}
+		
+		else if (categoryOption.equals("5")) {
+			String category = "traineevet";
+			mvc.searchByCategory(category);
+		}
 
-		} else {
-			System.out.println("Invalid option. Please insert number 1, 2 or 3.");
+		else {
+			System.out.println("Invalid option. Please insert number 1, 2, 3, 4 or 5.");
 			categoryOptions();
 		}
 
@@ -142,27 +157,32 @@ public class MainVetClinicMenu {
 		System.out.println("1 - Dog");
 		System.out.println("2 - Cat");
 		System.out.println("3 - Habbit");
+		System.out.println("4 - Bird");
 
 		String categoryOption = myScanner.next();
 
 		if (categoryOption.equals("1")) {
-			String type = "dog";
+			String type = "Dog";
 			mvc.searchByCategoryAnimal(type);
-
 		}
 
 		else if (categoryOption.equals("2")) {
-			String type = "cat";
+			String type = "Cat";
 			mvc.searchByCategoryAnimal(type);
-
 		}
 
 		else if (categoryOption.equals("3")) {
-			String type = "rabbit";
+			String type = "Rabbit";
 			mvc.searchByCategoryAnimal(type);
+		}
+		
+		else if (categoryOption.equals("4")) {
+			String type = "Bird";
+			mvc.searchByCategoryAnimal(type);
+		}
 
-		} else {
-			System.out.println("Invalid option. Please insert number 1, 2 or 3.");
+		else {
+			System.out.println("Invalid option. Please insert number 1, 2, 3 or 4.");
 			typeAnimals();
 		}
 

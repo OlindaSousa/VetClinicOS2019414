@@ -2,13 +2,13 @@ package staff;
 
 import abstractClasses.Staff;
 
-public class TraineeVet  extends Staff{
+public class TraineeVet extends Staff {
 
-	public TraineeVet(String name, String surname, String tasks, String salaryLevel, int iD, String occupation) {
+	public TraineeVet(String name, String surname, String tasks, double salaryLevel, int iD, String occupation) {
 		super(name, surname, tasks, salaryLevel, iD, occupation);
-		// TODO Auto-generated constructor stub
-	
-	this.setOccupation("trainee Vet");
+
+		this.setSalaryLevel(1500.0);
+		this.setOccupation("trainee Vet");
 	}
 
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 import abstractClasses.Animals;
 import abstractClasses.Staff;
@@ -5,14 +6,29 @@ import animal.*;
 import staff.*;
 
 public class VetClinicHelper {
+	
+	
 
 	static Staff[] staffList = new Staff[40];
 	static Animals[] animalsList = new Animals[1000];
+	private ArrayList<Animals> dentist = new ArrayList<>();
+	private ArrayList<Animals> traineeVet = new ArrayList<>();
+	private ArrayList<Animals> nurse = new ArrayList<>();
+	private ArrayList<Animals> neurologist = new ArrayList<>();
+	private ArrayList<Animals> surgeon = new ArrayList<>();
+	private ArrayList<Animals> veterinarian = new ArrayList<>();
 
 	public static void main(String[] args) {
-		//staffList(); 
-		//tasks();
+
+		orderList();
 	}
+	
+
+	private static void orderList() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	static StaffGenerator myStaffGenerator = new StaffGenerator();
 	static AnimalGenerator myAnimalGenerator = new AnimalGenerator();
@@ -68,7 +84,7 @@ public class VetClinicHelper {
 			Staff list = new VeterinaryNeurologist(nameParts[0], nameParts[1], "", 0, i, "");
 			staffList[i] = list;
 		}
-		
+
 		// Veterinarian Surgeon
 		for (int i = 30; i < 35; i++) {
 			String staffName = myStaffGenerator.getRandomName();
@@ -76,7 +92,7 @@ public class VetClinicHelper {
 			Staff list = new VeterinarySurgeon(nameParts[0], nameParts[1], "", 0, i, "");
 			staffList[i] = list;
 		}
-		
+
 		// TraineeVet
 		for (int i = 35; i < 40; i++) {
 			String staffName = myStaffGenerator.getRandomName();
@@ -89,9 +105,10 @@ public class VetClinicHelper {
 
 	public void tasks() {
 		for (Staff s : staffList) {
-			
+
 			if (s.getOccupation().equals("receptionist") || s.getOccupation().equals("IT")) {
-			System.out.println("Staff ID: " + s.getID() + "\n" + "Staff Name: " + s.getName() + " " + s.getSurname() + " \n" + "Tasks: " + s.getTasks() + "\n" + "Staff Occupaton: " + s.getOccupation() + "\n");
+				System.out.println("Staff ID: " + s.getID() + "\n" + "Staff Name: " + s.getName() + " " + s.getSurname()
+						+ " \n" + "Tasks: " + s.getTasks() + "\n" + "Staff Occupaton: " + s.getOccupation() + "\n");
 			}
 		}
 	}
@@ -169,8 +186,9 @@ public class VetClinicHelper {
 	public void printAnimals(Animals[] animalList) {
 
 		for (Animals a : animalsList) {
-			System.out.println("Animal ID: "  + a.getIDAnimal() + "\n" + "Animal Name: " + a.getName() + "\n" + "Animal Type: " + a.getTypeOfAnimal() + "\n"
-					+ "Age: " + a.getAge() + "\n" + "Medical Condition: " + a.getMedicalCondition() + "\n");
+			System.out.println("Animal ID: " + a.getIDAnimal() + "\n" + "Animal Name: " + a.getName() + "\n"
+					+ "Animal Type: " + a.getTypeOfAnimal() + "\n" + "Age: " + a.getAge() + "\n" + "Medical Condition: "
+					+ a.getMedicalCondition() + "\n");
 		}
 	}
 
@@ -178,7 +196,7 @@ public class VetClinicHelper {
 
 		for (Animals a : animalsList) {
 			if (a.getTypeOfAnimal().equalsIgnoreCase(type)) {
-				System.out.println("Animal ID: "  + a.getIDAnimal() + " - Animal Name: "  +a.getName());
+				System.out.println("Animal ID: " + a.getIDAnimal() + " - Animal Name: " + a.getName());
 			}
 		}
 	}
@@ -187,8 +205,111 @@ public class VetClinicHelper {
 
 		for (Animals a : animalsList) {
 			if (a.getName().equalsIgnoreCase(animalName)) {
-				System.out.println("ID: "  + a.getIDAnimal() + " - Name: "  +a.getName());
+				System.out.println("ID: " + a.getIDAnimal() + " - Name: " + a.getName());
 			}
 		}
 	}
+
+	public void orderList(String occupation) {
+
+		int position = 1;
+
+		if (occupation.equalsIgnoreCase("surgeon")) {
+			for (Animals animal : surgeon) {
+				System.out.println("Position " + position + " " + animal.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("dentist")) {
+			for (Animals animal : dentist) {
+				System.out.println("Position " + position + " " + animal.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("neurologist")) {
+			for (Animals animal : neurologist) {
+				System.out.println("Position " + position + " " + animal.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("nurse")) {
+			for (Animals animal : nurse) {
+				System.out.println("Position " + position + " " + animal.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("trainee vet")) {
+			for (Animals animal : traineeVet) {
+				System.out.println("Position " + position + " " + animal.getName());
+				position++;
+			}
+		} else {
+			for (Animals animal : veterinarian) {
+				System.out.println("Position " + position + " " + animal.getName());
+				position++;
+			}
+			
+			System.out.println(position);
+		}
+
+	}
+
+	public void assignedList(String occupation) {
+
+		if (occupation.equalsIgnoreCase("surgeon")) {
+			for (Animals animal : surgeon) {
+				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
+			}
+		} else if (occupation.equalsIgnoreCase("dentist")) {
+			for (Animals animal : dentist) {
+				System.out.println(animal.getIDAnimal() + " " + animal.getName());
+			}
+
+		} else if (occupation.equalsIgnoreCase("neurologist")) {
+			for (Animals animal : neurologist) {
+				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
+			}
+		} else if (occupation.equalsIgnoreCase("nurse")) {
+			for (Animals animal : neurologist) {
+				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
+			}
+		} else if (occupation.equalsIgnoreCase("trainee vet")) {
+			for (Animals animal : neurologist) {
+				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
+			}
+		}else {
+			for (Animals animal : veterinarian) {
+				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
+			}
+		}
+	}
+
+	public void assignAnimal() {
+
+		for (Animals animal : animalsList) {
+
+			if (animal.getMedicalCondition().equalsIgnoreCase("heart")
+					|| animal.getMedicalCondition().equalsIgnoreCase("cancer")					
+					|| animal.getMedicalCondition().equalsIgnoreCase("glaucoma")) {
+				surgeon.add(animal);
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("dental disease") 
+					|| animal.getMedicalCondition().equalsIgnoreCase("Oral Neoplasms")
+					|| animal.getMedicalCondition().equalsIgnoreCase("Periodontal Disease") 
+					|| animal.getMedicalCondition().equalsIgnoreCase("Tooth Fractures")) {
+				dentist.add(animal);
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("Rabies") 
+					|| animal.getMedicalCondition().equalsIgnoreCase("Idiopathic Epilepsy") 
+					|| animal.getMedicalCondition().equalsIgnoreCase("Intervertebral Disc Disease")) {
+				neurologist.add(animal);
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("Dressings")
+					|| animal.getMedicalCondition().equalsIgnoreCase("Take Medication")
+					|| animal.getMedicalCondition().equalsIgnoreCase("Diarrhea")) {
+				nurse.add(animal);
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("Ringworm") 
+					|| animal.getMedicalCondition().equalsIgnoreCase("Worms")
+					|| animal.getMedicalCondition().equalsIgnoreCase("Fever")
+					|| animal.getMedicalCondition().equalsIgnoreCase("Influenza Virus")) {
+				traineeVet.add(animal);
+			} else {
+				veterinarian.add(animal);
+			}
+		}
+	}
+
 }

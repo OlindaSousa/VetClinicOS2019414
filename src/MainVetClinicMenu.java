@@ -10,6 +10,7 @@ public class MainVetClinicMenu {
 		mvc = new VetClinicHelper();
 		mvc.staffList();
 		mvc.animalsList();
+		mvc.assignAnimal();
 
 		welcomeMenu();
 
@@ -32,6 +33,10 @@ public class MainVetClinicMenu {
 			System.out.println("2 - Staff listed by category");
 			System.out.println("3 - Staff working at the moment");
 			System.out.println("4 - Search for a specific staff by name");
+			System.out.println("5 - List all the animals assigned to a member of medical staff");
+			System.out.println(
+					"6 - List the order in which pets will be looked after by a particular member of the medical\r\n"
+							+ "staff");
 
 			String staffOption = myScanner.next();
 
@@ -41,12 +46,12 @@ public class MainVetClinicMenu {
 
 			else if (staffOption.equals("2")) {
 				categoryOptions();
-			} 
-			
+			}
+
 			else if (staffOption.equals("3")) {
 				mvc.tasks();
-			} 
-			
+			}
+
 			else if (staffOption.equals("4")) {
 
 				System.out.println("Please insert staff Name");
@@ -54,18 +59,73 @@ public class MainVetClinicMenu {
 				Staff s = mvc.searchStaff(staffName);
 
 				if (s != null) {
-					System.out.println("Staff ID: " + s.getID() + "\n" + "Staff Name: " + s.getName() + " " + s.getSurname()
-					+ "\n" + "Staff Occupaton: " + s.getClass().getSimpleName() + "\n" + "Salary level: "
-					+ s.getSalaryLevel() + "\n");
+					System.out.println("Staff ID: " + s.getID() + "\n" + "Staff Name: " + s.getName() + " "
+							+ s.getSurname() + "\n" + "Staff Occupaton: " + s.getClass().getSimpleName() + "\n"
+							+ "Salary level: " + s.getSalaryLevel() + "\n");
 				}
 
 				else {
 					System.out.println(staffName.toUpperCase() + " is not found");
 				}
+			} else if (staffOption.equals("5")) {
+
+				System.out.println("Please select one of the options below:");
+				System.out.println("1 - Dentist");
+				System.out.println("2 - Surgeon");
+				System.out.println("3 - Neurologist");
+				System.out.println("4 - Nurse");
+				System.out.println("5 - Trainee Vet");
+				System.out.println("6 - Veterinarian");
+
+				String doctorSelected = myScanner.next();
+
+				if (doctorSelected.equals("1")) {
+					mvc.assignedList("dentist");
+				} else if (doctorSelected.equals("2")) {
+					mvc.assignedList("Surgeon");
+				} else if (doctorSelected.equals("3")) {
+					mvc.assignedList("Neurologist");
+				} else if (doctorSelected.equals("4")) {
+					mvc.assignedList("Nurse");
+				} else if (doctorSelected.equals("5")) {
+					mvc.assignedList("Trainee Vet");
+				} else if (doctorSelected.equals("6")) {
+					mvc.assignedList("Veterinarian");
+				} else {
+
+				}
+			}
+			else if(staffOption.equals("6")) {
+				
+				System.out.println("Please select one of the options below:");
+				System.out.println("1 - Dentist");
+				System.out.println("2 - Surgeon");
+				System.out.println("3 - Neurologist");
+				System.out.println("4 - Nurse");
+				System.out.println("5 - Trainee Vet");
+				System.out.println("6 - Veterinarian");
+
+				String doctorSelected = myScanner.next();
+
+				if (doctorSelected.equals("1")) {
+					mvc.orderList("dentist");
+				} else if (doctorSelected.equals("2")) {
+					mvc.orderList("Surgeon");
+				} else if (doctorSelected.equals("3")) {
+					mvc.orderList("Neurologist");
+				} else if (doctorSelected.equals("4")) {
+					mvc.orderList("Nurse");
+				} else if (doctorSelected.equals("5")) {
+					mvc.orderList("Trainee Vet");
+				} else if (doctorSelected.equals("6")) {
+					mvc.orderList("Veterinarian");
+				} else {
+
+				}
 			}
 
 			else {
-				System.out.println("Invalid option. Please insert number 1, 2, 3 or 4.");
+				System.out.println("Invalid option. Please insert number 1, 2, 3, 4, 5 or 6.");
 			}
 		}
 
@@ -130,7 +190,7 @@ public class MainVetClinicMenu {
 			String category = "it";
 			mvc.searchByCategory(category);
 		}
-		
+
 		else if (categoryOption.equals("3")) {
 			String category = "nurse";
 			mvc.searchByCategory(category);
@@ -140,22 +200,22 @@ public class MainVetClinicMenu {
 			String category = "veterinarian";
 			mvc.searchByCategory(category);
 		}
-		
+
 		else if (categoryOption.equals("5")) {
 			String category = "veterinarian dentist";
 			mvc.searchByCategory(category);
 		}
-		
+
 		else if (categoryOption.equals("6")) {
 			String category = "veterinarian neurologist";
 			mvc.searchByCategory(category);
 		}
-		
+
 		else if (categoryOption.equals("7")) {
 			String category = "veterinarian surgeon";
 			mvc.searchByCategory(category);
 		}
-		
+
 		else if (categoryOption.equals("8")) {
 			String category = "trainee Vet";
 			mvc.searchByCategory(category);
@@ -193,7 +253,7 @@ public class MainVetClinicMenu {
 			String type = "Rabbit";
 			mvc.searchByCategoryAnimal(type);
 		}
-		
+
 		else if (categoryOption.equals("4")) {
 			String type = "Bird";
 			mvc.searchByCategoryAnimal(type);

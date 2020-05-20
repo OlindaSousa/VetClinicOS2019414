@@ -8,8 +8,10 @@ public class AnimalGenerator {
 			"Angus", "Einstein", "Yoda", "Helix", "Apollo", "Nala" };
 	protected int[] age = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 	protected String[] medicalCondition = { "Heart", "Cancer", "Diabetes", "Rabies", "Parvovirus", "Ringworm",
-			"Allergies", "Arthritis", "Bronchitis", "Deafness", "Influenza Virus", "Diarrhea", "Depression",
-			"Deafness ", "Dental Disease", "llergy", "Pancreatitis", "Pregnancy", "Worms", "Glaucoma", };
+	protected String[] medicalCondition = { "Heart", "Cancer", "Diabetes", "Rabies", "Ringworm", "Allergies","Arthritis",  
+			"Bronchitis", "Deafness", "Influenza Virus", "Diarrhea", "Dental Disease", "Pancreatitis", "Worms",   
+			"Glaucoma", "Dressings", "Take Medication", "Idiopathic Epilepsy", "Intervertebral Disc Disease", 
+			"Oral Neoplasms", "Periodontal Disease", "Tooth Fractures"};
 
 	public AnimalGenerator() {
 

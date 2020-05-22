@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-import abstractClasses.Animals;
-import abstractClasses.Staff;
+import abstractClasses.*;
 import animal.*;
 import staff.*;
 
@@ -9,27 +8,21 @@ import staff.*;
  * 
  * @author Olinda Sousa
  * 
- * 
+ *         Here it was created the methods that should be print in
+ *         VetClinicMenu.
  *
  */
 
 public class VetClinicHelper {
 
-	// The Array is define the number of Staff and Animals it will be created
 	static Staff[] staffList = new Staff[40];
-	static Animals[] animalsList = new Animals[1000];
-
-	//
+	static Animals[] animalsList = new Animals[1000]; 
 	private ArrayList<Animals> dentist = new ArrayList<>();
 	private ArrayList<Animals> traineeVet = new ArrayList<>();
 	private ArrayList<Animals> nurse = new ArrayList<>();
 	private ArrayList<Animals> neurologist = new ArrayList<>();
 	private ArrayList<Animals> surgeon = new ArrayList<>();
 	private ArrayList<Animals> veterinarian = new ArrayList<>();
-
-	public static void main(String[] args) {
-
-	}
 
 	static StaffGenerator myStaffGenerator = new StaffGenerator();
 	static AnimalGenerator myAnimalGenerator = new AnimalGenerator();
@@ -104,6 +97,7 @@ public class VetClinicHelper {
 			Staff list = new TraineeVet(nameParts[0], nameParts[1], "", 0, i, "");
 			staffList[i] = list;
 		}
+
 		return staffList;
 	}
 
@@ -132,7 +126,7 @@ public class VetClinicHelper {
 	}
 
 	/*
-	 * This method will be list all Staff it was generated on SttaffList
+	 * This method will be list all Staff by category it was generated on SttaffList
 	 */
 	public void searchByCategory(String category) {
 		for (Staff s : staffList) {
@@ -203,7 +197,10 @@ public class VetClinicHelper {
 		return animalsList;
 	}
 
-	public void printAnimals(Animals[] animalList) {
+	/*
+	 * This method will be list all Animal it was generated on AnimalsList
+	 */
+	public void printAnimals() {
 
 		for (Animals a : animalsList) {
 			System.out.println("Animal ID: " + a.getIDAnimal() + "\n" + "Animal Name: " + a.getName() + "\n"
@@ -213,7 +210,7 @@ public class VetClinicHelper {
 	}
 
 	/*
-	 * This method will be list all Animals it was generated on AnimalsList
+	 * This method will be list all Animals by type it was generated on AnimalsList
 	 */
 	public void searchByCategoryAnimal(String type) {
 
@@ -225,8 +222,8 @@ public class VetClinicHelper {
 	}
 
 	/*
-	 * This method will search an specific name an if found it, it will storage
-	 * otherwise it will return null.
+	 * This method will search an specific animal name an if found it, it will
+	 * storage otherwise it will return null.
 	 */
 	public Animals searchAnimal(String animalName) {
 		for (Animals a : animalsList) {
@@ -237,6 +234,9 @@ public class VetClinicHelper {
 		return null;
 	}
 
+	/*
+	 * This method will be assigned an animal to a member of medical staff
+	 */
 	public void assignAnimal() {
 
 		for (Animals animal : animalsList) {

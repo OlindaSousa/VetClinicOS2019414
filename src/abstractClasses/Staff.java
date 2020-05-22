@@ -1,14 +1,25 @@
 package abstractClasses;
 
+/**
+ * 
+ * @author Olinda Sousa
+ * 
+ *         The Staff Class contains the objects that will be instantiated for
+ *         the subclass Receptionists, IT, Nurse, Veterinarian, Veterinarian
+ *         Dentist, Veterinarian Neurologist, Veterinarian Surgeon, Trainee Vet.
+ *         The methods implemented here will be overridden in the subclass.
+ *
+ */
+
 public abstract class Staff {
 
 	private String name;
 	private String surname;
 	private String tasks;
-	private double salaryLevel; // junior - enter level, pleno e senior
+	private double salaryLevel;
 	private int ID;
 	private String occupation;
-	
+
 	public Staff(String name, String surname, String tasks, double salaryLevel, int iD, String occupation) {
 		super();
 		this.name = name;
@@ -17,7 +28,7 @@ public abstract class Staff {
 		this.salaryLevel = salaryLevel;
 		ID = iD;
 		this.occupation = occupation;
-		
+
 	}
 
 	public String getName() {
@@ -67,6 +78,5 @@ public abstract class Staff {
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
-
 
 }

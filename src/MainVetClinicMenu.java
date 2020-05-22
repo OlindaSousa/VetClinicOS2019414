@@ -1,6 +1,17 @@
 import java.util.Scanner;
 
+import abstractClasses.Animals;
 import abstractClasses.Staff;
+
+/**
+ * 
+ * @author Olinda Sousa
+ * 
+ *         This is the Main Menu where the system will be run. The Menu is
+ *         divided in sections first is necessary to create all Staff an Animal
+ *         list to be possible return the methods following. 
+ *
+ */
 
 public class MainVetClinicMenu {
 	VetClinicHelper mvc;
@@ -8,6 +19,11 @@ public class MainVetClinicMenu {
 	public MainVetClinicMenu() {
 
 		mvc = new VetClinicHelper();
+
+		/*
+		 * when started the program needs to run the methods to create the Staff List,
+		 * the Animal List and the Assign List by Animal.
+		 */
 		mvc.staffList();
 		mvc.animalsList();
 		mvc.assignAnimal();
@@ -18,6 +34,9 @@ public class MainVetClinicMenu {
 
 	public void welcomeMenu() {
 
+		/*
+		 * The system will start giving the user 2 options to select
+		 */
 		System.out.println("Welcome to OS VetClinic!");
 		System.out.println("What information would like to consult:");
 		System.out.println("1 - Staff");
@@ -26,6 +45,9 @@ public class MainVetClinicMenu {
 		Scanner myScanner = new Scanner(System.in);
 		String option = myScanner.next();
 
+		/*
+		 * 
+		 */		
 		if (option.equals("1")) {
 
 			System.out.println("What would you like to see from our staff list:");
@@ -94,9 +116,8 @@ public class MainVetClinicMenu {
 				} else {
 
 				}
-			}
-			else if(staffOption.equals("6")) {
-				
+			} else if (staffOption.equals("6")) {
+
 				System.out.println("Please select one of the options below:");
 				System.out.println("1 - Dentist");
 				System.out.println("2 - Surgeon");
@@ -151,7 +172,17 @@ public class MainVetClinicMenu {
 
 				System.out.println("Please insert animal Name");
 				String animalName = myScanner.next();
-				mvc.searchAnimal(animalName);
+				Animals a = mvc.searchAnimal(animalName);
+				
+				if (a != null) {
+					System.out.println("Animal ID: " + a.getIDAnimal() + "\n" + "Animal Name: " + a.getName() + "\n"
+							+ "Animal Type: " + a.getTypeOfAnimal() + "\n" + "Age: " + a.getAge() + "\n" + "Medical Condition: "
+							+ a.getMedicalCondition() + "\n");
+				}
+				
+				else {
+					System.out.println(animalName.toUpperCase() + " is not found");
+				}
 			}
 
 			else {

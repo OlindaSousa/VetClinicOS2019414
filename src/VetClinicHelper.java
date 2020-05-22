@@ -5,12 +5,21 @@ import abstractClasses.Staff;
 import animal.*;
 import staff.*;
 
-public class VetClinicHelper {
-	
-	
+/**
+ * 
+ * @author Olinda Sousa
+ * 
+ * 
+ *
+ */
 
+public class VetClinicHelper {
+
+	// The Array is define the number of Staff and Animals it will be created
 	static Staff[] staffList = new Staff[40];
 	static Animals[] animalsList = new Animals[1000];
+
+	//
 	private ArrayList<Animals> dentist = new ArrayList<>();
 	private ArrayList<Animals> traineeVet = new ArrayList<>();
 	private ArrayList<Animals> nurse = new ArrayList<>();
@@ -20,19 +29,14 @@ public class VetClinicHelper {
 
 	public static void main(String[] args) {
 
-		orderList();
 	}
-	
-
-	private static void orderList() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	static StaffGenerator myStaffGenerator = new StaffGenerator();
 	static AnimalGenerator myAnimalGenerator = new AnimalGenerator();
 
+	/*
+	 * This method it will generate the Staff List
+	 */
 	public Staff[] staffList() {
 
 		// Recepcionist
@@ -103,6 +107,9 @@ public class VetClinicHelper {
 		return staffList;
 	}
 
+	/*
+	 * The Tasks will be assign only Admin Staff (IT and Nurse)
+	 */
 	public void tasks() {
 		for (Staff s : staffList) {
 
@@ -113,6 +120,9 @@ public class VetClinicHelper {
 		}
 	}
 
+	/*
+	 * This method will be list all Staff it was generated on SttaffList
+	 */
 	public void printStaff() {
 		for (Staff s : staffList) {
 			System.out.println("Staff ID: " + s.getID() + "\n" + "Staff Name: " + s.getName() + " " + s.getSurname()
@@ -121,6 +131,9 @@ public class VetClinicHelper {
 		}
 	}
 
+	/*
+	 * This method will be list all Staff it was generated on SttaffList
+	 */
 	public void searchByCategory(String category) {
 		for (Staff s : staffList) {
 			if (s.getOccupation().equalsIgnoreCase(category)) {
@@ -129,6 +142,10 @@ public class VetClinicHelper {
 		}
 	}
 
+	/*
+	 * This method will search an specific name an if found it, it will storage
+	 * otherwise it will return null.
+	 */
 	public Staff searchStaff(String staffName) {
 		for (Staff s : staffList) {
 			if (s.getName().equalsIgnoreCase(staffName)) {
@@ -138,6 +155,9 @@ public class VetClinicHelper {
 		return null;
 	}
 
+	/*
+	 * This method it will generate the Animal List
+	 */
 	public Animals[] animalsList() {
 
 		// Cat
@@ -192,6 +212,9 @@ public class VetClinicHelper {
 		}
 	}
 
+	/*
+	 * This method will be list all Animals it was generated on AnimalsList
+	 */
 	public void searchByCategoryAnimal(String type) {
 
 		for (Animals a : animalsList) {
@@ -201,83 +224,17 @@ public class VetClinicHelper {
 		}
 	}
 
-	public void searchAnimal(String animalName) {
-
+	/*
+	 * This method will search an specific name an if found it, it will storage
+	 * otherwise it will return null.
+	 */
+	public Animals searchAnimal(String animalName) {
 		for (Animals a : animalsList) {
 			if (a.getName().equalsIgnoreCase(animalName)) {
-				System.out.println("ID: " + a.getIDAnimal() + " - Name: " + a.getName());
+				return a;
 			}
 		}
-	}
-
-	public void orderList(String occupation) {
-
-		int position = 1;
-
-		if (occupation.equalsIgnoreCase("surgeon")) {
-			for (Animals animal : surgeon) {
-				System.out.println("Position " + position + " " + animal.getName());
-				position++;
-			}
-		} else if (occupation.equalsIgnoreCase("dentist")) {
-			for (Animals animal : dentist) {
-				System.out.println("Position " + position + " " + animal.getName());
-				position++;
-			}
-		} else if (occupation.equalsIgnoreCase("neurologist")) {
-			for (Animals animal : neurologist) {
-				System.out.println("Position " + position + " " + animal.getName());
-				position++;
-			}
-		} else if (occupation.equalsIgnoreCase("nurse")) {
-			for (Animals animal : nurse) {
-				System.out.println("Position " + position + " " + animal.getName());
-				position++;
-			}
-		} else if (occupation.equalsIgnoreCase("trainee vet")) {
-			for (Animals animal : traineeVet) {
-				System.out.println("Position " + position + " " + animal.getName());
-				position++;
-			}
-		} else {
-			for (Animals animal : veterinarian) {
-				System.out.println("Position " + position + " " + animal.getName());
-				position++;
-			}
-			
-			System.out.println(position);
-		}
-
-	}
-
-	public void assignedList(String occupation) {
-
-		if (occupation.equalsIgnoreCase("surgeon")) {
-			for (Animals animal : surgeon) {
-				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
-			}
-		} else if (occupation.equalsIgnoreCase("dentist")) {
-			for (Animals animal : dentist) {
-				System.out.println(animal.getIDAnimal() + " " + animal.getName());
-			}
-
-		} else if (occupation.equalsIgnoreCase("neurologist")) {
-			for (Animals animal : neurologist) {
-				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
-			}
-		} else if (occupation.equalsIgnoreCase("nurse")) {
-			for (Animals animal : neurologist) {
-				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
-			}
-		} else if (occupation.equalsIgnoreCase("trainee vet")) {
-			for (Animals animal : neurologist) {
-				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
-			}
-		}else {
-			for (Animals animal : veterinarian) {
-				System.out.println("ID " + animal.getIDAnimal() + " " + animal.getName());
-			}
-		}
+		return null;
 	}
 
 	public void assignAnimal() {
@@ -285,23 +242,23 @@ public class VetClinicHelper {
 		for (Animals animal : animalsList) {
 
 			if (animal.getMedicalCondition().equalsIgnoreCase("heart")
-					|| animal.getMedicalCondition().equalsIgnoreCase("cancer")					
+					|| animal.getMedicalCondition().equalsIgnoreCase("cancer")
 					|| animal.getMedicalCondition().equalsIgnoreCase("glaucoma")) {
 				surgeon.add(animal);
-			} else if (animal.getMedicalCondition().equalsIgnoreCase("dental disease") 
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("dental disease")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Oral Neoplasms")
-					|| animal.getMedicalCondition().equalsIgnoreCase("Periodontal Disease") 
+					|| animal.getMedicalCondition().equalsIgnoreCase("Periodontal Disease")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Tooth Fractures")) {
 				dentist.add(animal);
-			} else if (animal.getMedicalCondition().equalsIgnoreCase("Rabies") 
-					|| animal.getMedicalCondition().equalsIgnoreCase("Idiopathic Epilepsy") 
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("Rabies")
+					|| animal.getMedicalCondition().equalsIgnoreCase("Idiopathic Epilepsy")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Intervertebral Disc Disease")) {
 				neurologist.add(animal);
 			} else if (animal.getMedicalCondition().equalsIgnoreCase("Dressings")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Take Medication")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Diarrhea")) {
 				nurse.add(animal);
-			} else if (animal.getMedicalCondition().equalsIgnoreCase("Ringworm") 
+			} else if (animal.getMedicalCondition().equalsIgnoreCase("Ringworm")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Worms")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Fever")
 					|| animal.getMedicalCondition().equalsIgnoreCase("Influenza Virus")) {
@@ -312,4 +269,86 @@ public class VetClinicHelper {
 		}
 	}
 
+	/*
+	 * This method will be list all the animals assigned to a member of medical
+	 * staff
+	 */
+	public void assignedList(String occupation) {
+
+		if (occupation.equalsIgnoreCase("surgeon")) {
+			for (Animals a : surgeon) {
+				System.out.println("ID " + a.getIDAnimal() + " 		Name: " + a.getName()
+						+ "			Medical Condition: " + a.getMedicalCondition());
+			}
+		} else if (occupation.equalsIgnoreCase("dentist")) {
+			for (Animals a : dentist) {
+				System.out.println("ID " + a.getIDAnimal() + " 		Name: " + a.getName()
+						+ "			Medical Condition: " + a.getMedicalCondition());
+			}
+
+		} else if (occupation.equalsIgnoreCase("neurologist")) {
+			for (Animals a : neurologist) {
+				System.out.println("ID " + a.getIDAnimal() + " 		Name: " + a.getName()
+						+ "			Medical Condition: " + a.getMedicalCondition());
+			}
+		} else if (occupation.equalsIgnoreCase("nurse")) {
+			for (Animals a : neurologist) {
+				System.out.println("ID " + a.getIDAnimal() + " 		Name: " + a.getName()
+						+ "			Medical Condition: " + a.getMedicalCondition());
+			}
+		} else if (occupation.equalsIgnoreCase("trainee vet")) {
+			for (Animals a : neurologist) {
+				System.out.println("ID " + a.getIDAnimal() + " 		Name: " + a.getName()
+						+ "			Medical Condition: " + a.getMedicalCondition());
+			}
+		} else {
+			for (Animals a : veterinarian) {
+				System.out.println("ID " + a.getIDAnimal() + " 		Name: " + a.getName()
+						+ "			Medical Condition: " + a.getMedicalCondition());
+			}
+		}
+	}
+
+	/*
+	 * This method will be list the order in which pets will be looked after by a
+	 * particular member of the medical staff
+	 * 
+	 */
+	public void orderList(String occupation) {
+
+		int position = 1;
+
+		if (occupation.equalsIgnoreCase("surgeon")) {
+			for (Animals a : surgeon) {
+				System.out.println("Position " + position + " 		Name: " + a.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("dentist")) {
+			for (Animals a : dentist) {
+				System.out.println("Position " + position + " 		Name: " + a.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("neurologist")) {
+			for (Animals a : neurologist) {
+				System.out.println("Position " + position + " 		Name: " + a.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("nurse")) {
+			for (Animals a : nurse) {
+				System.out.println("Position " + position + " 		Name: " + a.getName());
+				position++;
+			}
+		} else if (occupation.equalsIgnoreCase("trainee vet")) {
+			for (Animals a : traineeVet) {
+				System.out.println("Position " + position + " 		Name: " + a.getName());
+				position++;
+			}
+		} else {
+			for (Animals a : veterinarian) {
+				System.out.println("Position " + position + " 		Name: " + a.getName());
+				position++;
+			}
+			System.out.println(position);
+		}
+	}
 }
